@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Ed.ff#3D</title>
+
+	<script src="libs/gsap/gsap.min.js" defer></script>
+	<script src="libs/gsap/ScrollTrigger.min.js" defer></script>
+	<script src="libs/gsap/ScrollSmoother.min.js" defer></script>
+
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/responsive.css">
+
+	<script  src="js/app.js" defer></script>
+	<script src="js/anchors.js" defer></script>
+	
+	<!-- -----------------------------------------------------------------------------------------------------------------------
+	<script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.63/build/spline-viewer.js"></script>
+	  ----------------------------------------------------------------------------------------------------------------------- 
+	<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@v0.153.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@v0.153.0/examples/jsm/"
+        }
+      }
+    </script> -----------------------------------------------------------------------------------------------------------------------  -->
+
+
+
+
+
+	<!--  REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+	<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script> 
+
+    <!--  OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+	<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script> 
+
+    <!--  OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+	<script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script> 
+    
+    <!--  OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+	<script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+
+
+</head>
+<body>
+
+	<div class="wrapper">
+		<div class="content">
+			
+			<nav>
+				<ul class="menuItems">
+				  <li><a href='#me' data-item='me'>me/contact</a></li>
+				  <li><a href='#projects' data-item='Projects'>Projects</a></li>
+				  <li><a href='#footer' data-item='Socials'>Socials</a></li>
+				</ul>
+			</nav>
+
+			<header class="hero-section">
+				<img data-speed=".6" class="hero" src="img/hero/ed_vector.png" alt="Alt" >
+				<div class="container">
+					<div data-speed=".75" class="main-header">
+						<h1 class="main-title">3D Portfolio</h1>
+						
+						<div class="scrollindicator">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+
+						<div class="scrollline" id="type03">
+							<a href="#projects">Scroll</a>
+						</div>
+
+					</div>
+				</div>
+			</header>
+		
+			<div class="portfolio">
+				<div class="container">
+					<main class="gallery">
+	
+
+
+
+						<div data-speed=".9" class="gallery__left">
+							<!--   ----------------------------------------------------------------------------------------------------------------------- 
+							<spline-viewer class="gallery__item" url="https://prod.spline.design/6QpcOrdrSD4FVAdO/scene.splinecode"></spline-viewer>
+							  --------------------------------------------------------------------------------------------------------------------- -->  
+
+
+							<!-- 💁 Include both scripts below to support all browsers! -->
+							<!-- Loads <model-viewer> for modern browsers: -->
+								<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+								<!-- Loads <model-viewer> for old browsers like IE11: -->
+								<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+							
+							<div class="filler">
+							</div>
+							
+   							 <model-viewer id="projects" class="gallery__item" src="3d_models/Pickup/scene.gltf" alt="A 3D model of a car" 
+							 shadow-intensity="1" camera-controls auto-rotate ar ></model-viewer>
+
+
+							 <model-viewer class="gallery__item" src="3d_models/Bullshark/bullshark.gltf" alt="A 3D model of a Bullshark logo" 
+							 shadow-intensity="1" disable-zoom disable-pan auto-rotate rotation-per-second="-400%" camera-orbit="-90deg 90deg 100%" ar ></model-viewer>
+
+							 <div class="text-block gallery__item">
+								<h2 class="text-block__h">LowPolygonal/GameReady "Flashbang grenade"</h2>
+								<p class="text-block__p">A low-poly model of the grenade ,on which most of details are baked on texture. Perfectly optimized for real-time use, 
+									such as in video games or virtual reality applications .</p>
+							</div>
+
+							<model-viewer class="gallery__item" src="3d_models/pipeshp/Pipes__32.gltf" alt="A 3D model of a Pipes" 
+							 shadow-intensity="1" camera-controls auto-rotate ar ></model-viewer>
+
+							<model-viewer class="gallery__item" id="toggle-model" src="3d_models/ducks-goose/GooseForWeb.gltf" alt="A 3D model of a Goose" shadow-intensity="1" 
+							disable-zoom disable-pan auto-rotate rotation-per-second="-250%" camera-orbit="-90deg 78deg 100%"></model-viewer>
+							<script>
+							const models = ['GooseForWeb.gltf', 'GooseForWeb1.gltf'];
+							const toggleModel = document.querySelector('#toggle-model');
+							let j = 0;
+							setInterval(() => toggleModel.setAttribute('src', `3d_models/ducks-goose/${models[j++ % 2]}`), 2500);
+							</script>
+
+							<!--<model-viewer class="gallery__item" src="3d_models/Pepe/Pepe.gltf" alt="A 3D model of 'Pepe the Frog' out of clay" 
+							 shadow-intensity="1" disable-zoom disable-pan auto-rotate rotation-per-second="-400%" camera-orbit="-90deg 90deg 100%" ar ></model-viewer> -->
+
+							 <div style="margin-bottom: var(--gallery-gap); max-height: 1vh;" 
+							 class="text-block gallery__item">
+								<h2 class="text-block__h">Few more examples of my works/renders</h2>
+							</div>
+
+							<img class="immage gallery__item" src="img/work/pepe.png" alt="Alt"> 
+
+							<img class="immage gallery__item" src="img/work/ringvff.png" alt="Alt">
+
+							<img class="immage gallery__item" src="img/work/GoldRing.png" alt="Alt"> 
+
+							<img class="immage gallery__item" src="img/work/Goose.png" alt="Alt">
+
+							<img 
+							style="max-width: calc(var(--index) * 30); 
+							align-items:flex-end;" 
+							class="immage gallery__item" src="img/work/hifi.png" alt="Alt">
+
+							<div class="filler"></div>
+
+
+						
+						</div>
+
+
+
+
+
+
+
+						<div data-speed="1.1" class="gallery__right">
+		
+							<div class="text-block gallery__item">
+								<h2 class="text-block__h">LowPolygonal "PICKUP"</h2>
+								<p class="text-block__p">A low-poly pickup truck is a 3D model created with minimal polygons while preserving essential details and shape. 
+									Unlike more detailed models, low-poly are lightweight and optimized for real-time use, 
+									such as in video games, websites or virtual reality applications .</p>
+							</div>
+		
+							
+							<div class="text-block gallery__item">
+								<h2 class="text-block__h">"Bullshark" 3D-LOGO</h2>
+								<p class="text-block__p">A 3D-logo developed for website of marketimg company. Later it was also animated and used as a marketing company.</p>
+							</div>
+
+							<model-viewer class="gallery__item" src="3d_models/FlashBang/flashbang.gltf" alt="3D-Model of Flashbang grenade" tone-mapping="commerce"
+							exposure="0.5" hadow-intensity="2" camera-controls disable-zoom auto-rotate ar></model-viewer>
+
+							<div class="filler"></div>
+
+							<div class="text-block gallery__item">
+								<h2 class="text-block__h">LowPolygonal/GameReady "Pipes"</h2>
+								<p class="text-block__p">A low-poly model, on which most of details are baked on texture. Perfectly optimized for real-time use, 
+									such as in video games or virtual reality applications .</p>
+							</div>
+
+							<div class="filler"></div>
+
+							<div class="text-block gallery__item">
+								<h2 class="text-block__h">"Geese and Ducks"</h2>
+								<p class="text-block__p">3D-Models that visualize a commercial project for the production of rubber inflatable circles.</p>
+							</div>
+							
+							<div class="filler"></div>
+
+							<img class="immage gallery__item" src="img/work/car.png" alt="Alt">
+
+							<img class="immage gallery__item" src="img/work/hardsurf.png" alt="Alt">
+
+							<img class="immage gallery__item" src="img/work/ring.png" alt="Alt">
+
+							<img class="immage gallery__item" src="img/work/BestBlackDuck.png" alt="Alt"> 
+
+							<img class="immage gallery__item" src="img/work/boxxx.png" alt="Alt">
+
+		
+						</div>
+
+					</main>
+
+
+					<div>
+						<div id="me" class="card_container">
+							<div class="front side">
+								<div class="card_content">
+									<h1>EDVARD FAFENROT</h1>
+									<p>
+										HI. I am a graphic designer. I am as well specialised 
+										in front end web design and user experience.
+										Throughout my career, I have worked with companies of 
+										all shapes and sizes that enriched my experience. Also I’m 
+										a passionate 3D designer with global experience, I’ve worked in several countries,
+										collaborating with diverse teams in international companies.
+										My journey is a blend of creativity, technical expertise, 
+										and cultural exploration.
+									</p>
+								</div>
+							</div>
+							<div class="back side">
+								<div class="card_content">
+									<h1>Contact Me</h1>
+									<form>
+										<label>Your Name :</label>
+										<input type="text" placeholder="Ivan Ivanovich">
+										<label>Your E-mail :</label>
+										<input type="text" placeholder="Example@mail.com">
+										<label>Your message :</label>
+										<textarea placeholder="The Subject"></textarea>
+										<input class="card_back_button" type="submit" value="Done">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<footer id="footer" class="footer">
+
+						<div class="waves">
+						  <div class="wave" id="wave1"></div>
+						  <div class="wave" id="wave2"></div>
+						  <div class="wave" id="wave3"></div>
+						  <div class="wave" id="wave4"></div>
+						</div>
+
+						<ul class="social-icon">
+						  <li class="social-icon__item"><a class="social-icon__link" href="#">
+							  <ion-icon name="logo-facebook"></ion-icon>
+							</a></li>
+						  <li class="social-icon__item"><a class="social-icon__link" href="#">
+							  <ion-icon name="logo-twitter"></ion-icon>
+							</a></li>
+						  <li class="social-icon__item"><a class="social-icon__link" href="#">
+							  <ion-icon name="logo-linkedin"></ion-icon>
+							</a></li>
+						  <li class="social-icon__item"><a class="social-icon__link" href="#">
+							  <ion-icon name="logo-instagram"></ion-icon>
+							</a></li>
+						</ul>
+
+						<p>&copy;2024 Edvard Fafenrot | All Rights(vielleicht) Reserved</p>
+
+					  </footer>
+					  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+					  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
